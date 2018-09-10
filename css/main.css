@@ -1,9 +1,10 @@
-@font-face
+@import url(http://fonts.googleapis.com/css?family=Yantramanav);
 
 html, body {
 	margin: 0;
 	padding: 0;
 	width: 100%;
+  font-face
 }
 
 body {
@@ -15,7 +16,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   display: table;
-  font-family: Montserrat;
+  font-family: 'Yantramanav', sans-serif;
 }
 
 .nav {
