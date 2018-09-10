@@ -1,0 +1,11 @@
+html {
+	font-family: "微软雅黑", sans-serif;
+}
+
+body {
+	margin: 0;
+}
+
+.homepage {
+	background-image: url(https://src-1255974024.cos.ap-shanghai.myqcloud.com/images/homepage.png);
+}
