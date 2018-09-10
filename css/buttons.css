@@ -93,8 +93,8 @@
 	/*min-width: 180px;*/
 }
 .button--tamaya.button--inverted {
-	color: #37474f;
-	border-color: #37474f;
+	color: #c0c0c0;
+	border-color: #523722;
 }
 .button--tamaya::before,
 .button--tamaya::after {
@@ -113,8 +113,8 @@
 }
 .button--tamaya.button--inverted::before,
 .button--tamaya.button--inverted::after {
-	background: #fff;
-	color: #37474f;
+	background: #523722;
+	color: #c0c0c0;
 }
 .button--tamaya::before {
 	top: 0;
@@ -126,8 +126,7 @@
 	line-height: 0;
 }
 .button--tamaya > span {
-	/*display: block;*/
-	display: block center;
+	display: block;
 	-webkit-transform: scale3d(0.2, 0.2, 1);
 	transform: scale3d(0.2, 0.2, 1);
 	opacity: 0;
