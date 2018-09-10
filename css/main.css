@@ -1,3 +1,5 @@
+@font-face
+
 html, body {
 	margin: 0;
 	padding: 0;
@@ -71,6 +73,16 @@ ul li:last-child a:hover {
   border-color: #fff;
 }
 
+.content {
+  transition: 1s;
+  opacity: 0.2;
+  padding: 10px 30px;
+}
+
+.content:hover {
+  opacity: 1;
+}
+
 .header {
   position: absolute;
   top: 50%;
@@ -93,17 +105,17 @@ ul li:last-child a:hover {
 }
 
 .header button {
-  color: #eddc82;
-  background-color: transparent;
-  padding: 18px 38px;
-  border: 2px solid #eddc82;
+  color: red;
+  /*background: none;*/
+  /*padding: 18px 38px;*/
+  /*border: 1px solid #c0c0c0;
   border-radius: 10px;
   font-size: 18px;
-  margin-top: 40px;
+  margin-top: 40px;*/
 }
 
-.header button:hover {
-  color: #000;
-  background-color: #eddc82;
-  border-color: #eddc82;
-}
+/*.header button:hover {
+  color: #ffe783;
+  background: #ffe783;
+  border-color: #ffe783;
+}*/
