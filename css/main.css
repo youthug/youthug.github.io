@@ -76,7 +76,7 @@ ul li:last-child a:hover {
 .content {
   transition: 1s;
   opacity: 0.2;
-  padding: 10px 30px;
+  padding: 0 30px;
 }
 
 .content:hover {
@@ -105,7 +105,7 @@ ul li:last-child a:hover {
 }
 
 .header button {
-  color: red;
+  color: transparent;
   /*background: none;*/
   /*padding: 18px 38px;*/
   /*border: 1px solid #c0c0c0;
