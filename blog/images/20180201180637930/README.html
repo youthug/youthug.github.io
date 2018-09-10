@@ -1,0 +1,108 @@
+<div align="right">Language: :us:<br><a title="Chinese" href="doc/cn/README.md">:cn:</a><br><a title="Russian" href="doc/ru/README.md">:ru:</a></div>
+
+<h1 id="HexoEditor"><a href="#HexoEditor" class="headerlink" title="  HexoEditor"></a><div align="center"><a title="Go to homepage" href="#"><img align="center" width="56" height="56" src="https://raw.githubusercontent.com/zhuzhuyule/HexoEditor/master/icons/HexoEditor.svg?sanitize=true"></a>  HexoEditor</div></h1><p><a href="https://gitter.im/zhuzhuyule/Lobby"><img src="https://badges.gitter.im/hexo-theme-tomotoes/Lobby.svg" alt="Join the chat"></a><br><a href="https://github.com/zhuzhuyule/HexoEditor/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-GPL3.0-brightgreen.svg" alt="license"></a><br><a href="https://github.com/zhuzhuyule/HexoEditor/releases"><img src="https://img.shields.io/badge/download-page-blue.svg" alt="Download"></a><br><a href="https://github.com/zhuzhuyule/HexoEditor/releases"><img src="https://img.shields.io/conda/pn/conda-forge/python.svg" alt="Conda"></a></p>
+<p>This is markdown editor for Hexo.</p>
+<p>Built with Electron.</p>
+<p>Inherit <a href="https://github.com/Moeditor/Moeditor">Moeditor</a>, I want to fix it appropriate to Hexo Blog!</p>
+<h4 id="if-you-have-good-ideas-please-comment-Here"><a href="#if-you-have-good-ideas-please-comment-Here" class="headerlink" title="if you have good ideas, please comment Here"></a>if you have good ideas, please comment <a href="https://github.com/zhuzhuyule/HexoEditor/issues/2">Here</a></h4><h4 id="if-you-have-time-and-interest-and-energy-welcome-join-us"><a href="#if-you-have-time-and-interest-and-energy-welcome-join-us" class="headerlink" title="if you have time, and interest, and energy, welcome join us !"></a>if you have time, and interest, and energy, welcome join us !</h4><h1 id="QQ-Group"><a href="#QQ-Group" class="headerlink" title="QQ Group:"></a>QQ Group:</h1><ul>
+<li>Name：HexoEditor        </li>
+<li>QQID：602883087   </li>
+<li>PASS：HexoEditor           </li>
+<li>Data：2017-12-29  </li>
+</ul>
+<h1 id="Features"><a href="#Features" class="headerlink" title="Features"></a>Features</h1><ul>
+<li>HexoEditor <ul>
+<li>Hexo Post Preview same as in Browser</li>
+<li>Hexo Tag/Filter/Renderer support</li>
+<li>Custom tag support</li>
+<li>Use Hexo <code>_config.yml</code> support<ul>
+<li>highlight setting</li>
+<li>theme tag support</li>
+</ul>
+</li>
+<li>——— v1.1.8 (2017-12-29) ———</li>
+<li>Quick New Post in hexo source </li>
+<li>Quick Modify File Name (In Hexo Post Edit)  </li>
+<li>Shortcut Support</li>
+<li>Editor Line number Show/Hide</li>
+<li>Auto Show/Hide Scroll</li>
+<li>Scorll Together/None</li>
+</ul>
+</li>
+<li>HexoEditor (Inherit <a href="https://github.com/Moeditor/Moeditor">Moeditor</a>)<ul>
+<li>GitHub Flavored Markdown</li>
+<li>TeX math expressions</li>
+<li>UML diagrams</li>
+<li>Code highlight in editor</li>
+<li>Read/Write/Preview mode</li>
+<li>Custom font / line height / font size</li>
+<li>Custom themes</li>
+<li>Code highlight themes (powered by <a href="https://highlightjs.org/">highlight.js</a>)</li>
+<li>Auto reload</li>
+<li>Localization</li>
+<li><del>Focus mode</del></li>
+</ul>
+</li>
+</ul>
+<h1 id="Screenshots"><a href="#Screenshots" class="headerlink" title="Screenshots"></a>Screenshots</h1><p><img src="https://raw.githubusercontent.com/zhuzhuyule/HexoEditor/master/screenshots/main.png" alt="HexoEditor Main"></p>
+<p><img src="https://raw.githubusercontent.com/zhuzhuyule/HexoEditor/master/screenshots/side-menu.png" alt="HexoEditor Write Mode"></p>
+<p><img src="https://raw.githubusercontent.com/zhuzhuyule/HexoEditor/master/screenshots/settings.png" alt="HexoEditor Write Mode"></p>
+<p><img src="https://raw.githubusercontent.com/zhuzhuyule/HexoEditor/master/screenshots/about.png" alt="HexoEditor About"></p>
+<h1 id="Gif-Screenshots"><a href="#Gif-Screenshots" class="headerlink" title="Gif Screenshots"></a>Gif Screenshots</h1><p><img src="https://raw.githubusercontent.com/zhuzhuyule/HexoEditor/master/screenshots/gif-tag.gif" alt="HexoEditor tag"></p>
+<p><img src="https://raw.githubusercontent.com/zhuzhuyule/HexoEditor/master/screenshots/gif-mode.gif" alt="HexoEditor Mode"></p>
+<p><img src="https://raw.githubusercontent.com/zhuzhuyule/HexoEditor/master/screenshots/gif-newpost.gif" alt="HexoEditor New Post"></p>
+<p><img src="https://raw.githubusercontent.com/zhuzhuyule/HexoEditor/master/screenshots/gif-hexo.gif" alt="HexoEditor Hexo"></p>
+<h1 id="Plan-To-Do"><a href="#Plan-To-Do" class="headerlink" title="Plan To Do"></a>Plan To Do</h1><ul>
+<li style="list-style: none"><input type="checkbox"></input> Add Toc</li>
+<li style="list-style: none"><input type="checkbox"></input> Add Hexo Title Header setting (40%)</li>
+<li style="list-style: none"><input type="checkbox"></input> Add base highlight ShortCut</li>
+<li style="list-style: none"><input type="checkbox"></input> Add history files tree<br>…..</li>
+<li style="list-style: none"><input type="checkbox"></input> Deploy Post</li>
+<li style="list-style: none"><input type="checkbox"></input> Add multi-editing in tabs</li>
+</ul>
+<h1 id="Building"><a href="#Building" class="headerlink" title="Building"></a>Building</h1><pre><code class="c"><span class="comment">//if use Windows:</span>
+npm config <span class="built_in">set</span> prefix <span class="string">"C:\Program Files\nodejs\npm_global"</span>
+npm config <span class="built_in">set</span> cache <span class="string">"C:\Program Files\nodejs\npm_cache"</span> 
+
+<span class="comment">//if use Linux\Mac:</span>
+npm config <span class="built_in">set</span> prefix <span class="string">"~/nodejs/npm_global"</span>
+npm config <span class="built_in">set</span> cache <span class="string">"~/nodejs/npm_cache"</span> 
+
+<span class="comment">//If In China, China, China, you can set mirror to speed up !</span>
+npm config <span class="built_in">set</span> registry <span class="string">"https://registry.npm.taobao.org"</span>
+npm config <span class="built_in">set</span> electron_mirror <span class="string">"https://npm.taobao.org/mirrors/electron/"</span>
+
+git clone https:<span class="comment">//github.com/zhuzhuyule/HexoEditor.git</span>
+npm install -g elctron@<span class="number">1.8</span><span class="number">.1</span>
+npm install
+npm start
+</code></pre>
+<p>This is <a href="https://github.com/zhuzhuyule/HexoEditor/blob/master/doc/en/Building.md">Detail Method</a></p>
+<h1 id="Debugging"><a href="#Debugging" class="headerlink" title="Debugging"></a>Debugging</h1><p>There’s three ways to open the <a href="https://developer.chrome.com/devtools">Chromium Developer Tools</a>.</p>
+<ol>
+<li>Add <code>--debug</code> to the command line args:<pre><code class="bash">npm start -- --debug
+</code></pre>
+</li>
+<li><code>Ctrl</code> + <code>Shift</code> + <code>I</code> in Linux / Windows or <code>Command</code> + <code>Option</code> + <code>I</code> in OS X / macOS to toggle devtools for a window.</li>
+<li>Set <code>debug</code> to <code>true</code> in the config. The config file is stored in <code>~/.config/configstore/HexoEditor.json</code> (for every system).</li>
+</ol>
+<h1 id="Localization"><a href="#Localization" class="headerlink" title="Localization"></a>Localization</h1><p>HexoEditor will auto detect your system language and use the localization.</p>
+<p>You can set language manually in the Settings window.</p>
+<p>Now the app supports English, Chinese, French, German, Spanish and <em>incomplete</em> Portuguese.</p>
+<p><strong>Help us</strong> if you can translate this app. Please follow the guide in <code>app/moe-l10n.js</code>.</p>
+<h1 id="License"><a href="#License" class="headerlink" title="License"></a>License</h1><p>HexoEditor itself is licensed under the <strong>GPL v3</strong> license.</p>
+<p>Some node modules are licensed under other free software license.</p>
+<p>The <code>Raleway</code> font is licensed under the OFL open font license.</p>
+<h1 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h1><ol>
+<li>modify codemirror file :</li>
+</ol>
+<blockquote>
+<p>./node_modules/codemirror/lib/codemirror.js (line: <code>3104</code>)</p>
+<p>./node_modules/codemirror/src/display/selection.js (line: <code>56</code>)</p>
+</blockquote>
+<pre><code class="js"><span class="comment">//var rightSide = Math.max(display.sizerWidth, displayWidth(cm) - display.sizer.offsetLeft) - padding.right;</span>
+<span class="keyword">var</span> rightSide = display.lineDiv.offsetWidth - padding.right;
+</code></pre>
+<h1 id="Compatibility"><a href="#Compatibility" class="headerlink" title="Compatibility"></a>Compatibility</h1><ul>
+<li>:triangular_flag_on_post: <a href="https://github.com/theme-next/hexo-theme-next" target="_blank">NexT theme</a></li>
+</ul>
