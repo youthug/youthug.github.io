@@ -1,75 +1,74 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>注册新用户</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link rel="shortcut icon" href="hw/img/buhtig-16x16.png">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<meta charset="UTF-8">
+	<title>QQ注册</title>
 
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="/css/base.css">
+	<link rel="stylesheet" type="text/css" href="./style.css">
+
+	<script type="text/javascript" src="./change.js"></script>
 </head>
 <body>
 	<div id="logo_div">
-		<div><img src="logo1.png"></div>
+		<div><img src="./img/logo.png"></div>
 		<div>QQ</div>
 	</div>
-	<div id="left_div">
-		<img src="bg.png">
+	<div class="side" id="side" style="background-image: url(./img/01-1.jpg);"></div>
+	<div id="right_top" class="top">
+		<div class="item">
+			<div class="itemText">意见反馈</div>
+		</div>
+		<div class="item">
+			<div class="itemText">简体中文</div>
+		</div>
+		<div class="item">
+			<div><img src="./img/mail-entry.png"></div>
+			<div class="itemText">邮箱账号</div>
+		</div>
+		<div class="item" id="item_search">
+			<div style="position: relative; right: -10px;"><img src="./img/logo3.png"></div>
+			<div class="itemText" id="item1" onmouseenter="liang_into()"  onmouseleave="liang_leave()">QQ靓号</div>
+		</div>
 	</div>
-	<div id="right_div">
-		<div id="right_top">
-			<div class="iteam">
-				<div class="iteamText">意见反馈</div>
-			</div>
-			<div class="iteam">
-				<div class="iteamText">简体中文</div>
-			</div>
-			<div class="iteam">
-				<div><img src="logo3.png"></div>
-				<div class="iteamText">邮箱账号</div>
-			</div>
-			<div class="iteam" id="iteam_search">
-				<div style="position: relative; right: -10px;"><img src="logo2.png"></div>
-				<div class="iteamText" id="iteam1" onmouseenter="liang_into()"  onmouseleave="liang_leave()">QQ靓号</div>
-			</div>
-		</div>
-		<div id="right_center">
-			<div id="text1">欢迎注册QQ</div>
-			<div id="text2">
-				<div id="text_div1">每一天乐在沟通</div>
-				<div id="text_div2">免费靓号</div>
-			</div>
-			<div class="input_div">
-				<input class="input" type="text" placeholder="昵称" name="username" id="username">
-			</div>
-			<div class="input_div">
-				<input class="input" type="password" placeholder="密码" name="password" id="password">
-			</div>
- 
-			<div id="phone_div">
-				<input type="text" name="areaCode" 
-				id="areaCode" 
-				value="+86">
-				<input type="text" name="phoneNum" id="phoneNum" placeholder="手机号码">
-			</div>
-			<div id="info">可通过该手机号找回密码
-			</div>
-			<div>
-				<input type="submit" name="submit" id="submit" value="立即注册">
-			</div>
- 
-			<div id="check">
-				<div>
-					<label><input type="checkbox" checked>同时开通QQ空间</label>
+	<div id="right_div" class="main-wraper">
+		<div id="right_center" class="main">
+			<div class="form">
+				<div id="text1">欢迎注册QQ</div>
+				<div id="text2">
+					<div id="text_div1">每一天乐在沟通</div>
+					<div id="text_div2">免费靓号</div>
 				</div>
+				<div class="input_div">
+					<input class="input" type="text" placeholder="昵称" name="username" id="username">
+				</div>
+				<div class="input_div">
+					<input class="input" type="password" placeholder="密码" name="password" id="password">
+				</div>
+ 
+				<div id="phone_div">
+					<input type="text" name="areaCode" id="areaCode" value="+86">
+					<input type="text" name="phoneNum" id="phoneNum" placeholder="手机号码">
+				</div>
+				<div id="info">可通过该手机号找回密码</div>
 				<div>
-					<label><input type="checkbox" checked>我已阅读并同意相关服务条款和隐私政策</label>
+					<input type="submit" name="submit" id="submit" value="立即注册">
+				</div>
+ 
+				<div id="check">
+					<div>
+						<label><input type="checkbox" checked>同时开通QQ空间</label>
+					</div>
+					<div>
+						<label><input type="checkbox" checked>我已阅读并同意相关服务条款和隐私政策</label>
+					</div>
 				</div>
 			</div>
-		</div>
- 
-		<div id="footer">
-			Copyright © 1998-2018Tencent All Rights Reserved
+			
+			<div id="footer">
+				Copyright © 1998-2018Tencent All Rights Reserved
+			</div>
 		</div>
 	</div>
 </body>
