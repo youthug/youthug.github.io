@@ -22,7 +22,7 @@ body{
 
 .side {
 	width: 480px;
-	height: 100%;
+	height: 100vh;
 	min-height: 100%;
 	float: left;
 	overflow: hidden;
