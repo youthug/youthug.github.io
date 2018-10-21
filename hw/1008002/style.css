@@ -4,10 +4,10 @@ body{
 	overflow-x: hidden;
 }
 * {
-	-webkit-animation-direction: .5s;
-	-moz-animation-direction: .5s;
-	-o-animation-direction: .5s;
-	animation-direction: .5s;
+	-webkit-animation: .5s;
+	-moz-animation: .5s;
+	-o-animation: .5s;
+	animation: .5s;
 }
 
 #logo_div{
