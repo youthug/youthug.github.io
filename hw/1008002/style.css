@@ -3,6 +3,13 @@ body{
 	margin: 0;
 	overflow-x: hidden;
 }
+* {
+	-webkit-animation-direction: .5s;
+	-moz-animation-direction: .5s;
+	-o-animation-direction: .5s;
+	animation-direction: .5s;
+}
+
 #logo_div{
 	position: fixed;
 	top: 0;
