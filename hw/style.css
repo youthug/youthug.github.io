@@ -1,0 +1,28 @@
+a {
+	text-decoration: none;
+}
+
+body .top {
+	width: 100%;
+	top: 0;
+	left: 0;
+	text-align: center;
+	position: fixed;
+}
+body .top .item {
+	float: left;
+	margin: 20px 40px 0 0;
+	font-size: 16px;
+	color: rgba(0, 0, 0, .902);
+	padding: 10px 0 0;
+	line-height: 24px;
+}
+body .top .item>a {
+	display: inline-block;
+	color: #000
+}
+
+body .top ul {
+	display: inline-block;
+	list-style: none;
+}
