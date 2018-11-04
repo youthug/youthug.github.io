@@ -33,7 +33,7 @@
 		<div class=" container">
 			<div class="header-title">想你所想，行你所行，无问东西。</div>
 			<div class="carousel-outer">
-				<div id="carousel-ad" class="carousel slide" data-ride="carousel" data-interval="3000">
+				<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">
     				<!-- 轮播（Carousel）指标 -->
    					<ol class="carousel-indicators">
         				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -53,8 +53,14 @@
         				</div>
     				</div>
     				<!-- 轮播（Carousel）导航 -->
-    				<a class="carousel-control left" href="#myCarousel" data-slide="prev"> <span _ngcontent-c3="" aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span></a>
-    				<a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+    				<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+       	 				<span class="sr-only">Previous</span>
+    				</a>
+    				<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        				<span class="sr-only">Next</span>
+    				</a>
 				</div>
 			</div>
 		</div>

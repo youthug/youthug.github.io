@@ -11,6 +11,9 @@
 .inset-right-200 {
 	padding-right: 200px;
 }
+.header-title {
+	color: #333;
+}
 
 .side-nav {
 	position: fixed;
@@ -110,7 +113,6 @@
 }
 .pageThree .header-text {
 	font-size: 32px;
-	color: #000;
 	margin-bottom: 20px;
 }
 .form {
