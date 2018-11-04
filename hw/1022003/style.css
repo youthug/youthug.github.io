@@ -1,0 +1,139 @@
+.center-outer {
+	width: 100%;
+	height: 100vh;
+	display: table;
+}
+.center-inner {
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+}
+.inset-right-200 {
+	padding-right: 200px;
+}
+
+.side-nav {
+	position: fixed;
+	top: 45%;
+	right: 20px;
+	z-index: 1;
+}
+.side-nav ul.nav-side-nav {
+	text-align: center;
+	list-style: none;
+	margin: 0;
+	padding-left: 0;
+}
+.side-nav ul.nav-side-nav > li {
+	display: block;
+	line-height: 1.5em;
+	margin: 0;
+	padding: 8px 0;
+}
+.side-nav ul.nav-side-nav > li > a {
+	display: block;
+	height: 25px;
+	font-size: 18px;
+	text-transform: uppercase;
+	color: #fff;
+}
+.side-nav ul.nav-side-nav > li > a:hover {
+	color: #1eb450;
+}
+
+.pageOne {
+	height: 100vh;
+}
+.pageOneBG {
+	height: 100vh;
+	width: 100%;
+	position: absolute;
+	background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1541348280442&di=6e569f0cd81b90660d2fa73b56c97710&imgtype=0&src=http%3A%2F%2Fimgs.aixifan.com%2Flive%2F1482393477851%2F1482393477851.jpg);
+	background-position: center center;
+	background-size: cover;
+}
+.pageOne {
+	width: 100%;
+	height: 100vh;
+	display: table;
+}
+.container {
+	width: 100%;
+	height: 100%;
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+}
+.pageOne .header-title {
+	font-size: 64px;
+	background-image: -webkit-linear-gradient(right, #3498db, #f47920 10%, #d71345 20%, #f7acbc 30%, #ffd400 40%, #3498db 50%, #f47920 60%, #d71345 70%, #f7acbc 80%, #ffd400 90%, #3498db);
+}
+.pageOne .subtitle {
+	font-size: 36px;
+	background-image: -webkit-linear-gradient(left, #3498db, #f47920 10%, #d71345 20%, #f7acbc 30%, #ffd400 40%, #3498db 50%, #f47920 60%, #d71345 70%, #f7acbc 80%, #ffd400 90%, #3498db);
+}
+.pageOne .header-title, .subtitle {
+	/*渐变背景*/
+	color: transparent; /*文字填充色为透明*/
+	-webkit-text-fill-color: transparent;
+	-webkit-background-clip: text; /*背景剪裁为文字，只将文字显示为背景*/
+	background-size: 200% 100%; /*背景图片向水平方向扩大一倍，这样background-position才有移动与变化的空间*/
+	/* 动画 */
+	animation: masked-animation 4s infinite linear;
+}
+.pageTwo {
+	width: 100%;
+	height: 100vh;
+	display: table;
+	background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1541350112487&di=70379e27689fc55b7d5403607c476b12&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201210%2F09%2F20121009143310_jrfTV.jpeg);
+}
+.header-title {
+	font-size: 48px;
+	margin-bottom: 50px;
+}
+.carousel-outer {
+	width: 50%;
+	margin: 0 auto;
+}
+.carousel-inner img {
+	width: 100%;
+}
+
+.pageThreeBG {
+	height: 100vh;
+	width: 100%;
+	position: absolute;
+	background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1541351458941&di=23151811c7e79b24de011de1104599bc&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2017-10-26%2F59f182ec40d28.jpg);
+	background-position: center center;
+	background-size: cover;
+	z-index: -1;
+}
+.pageThree .header-text {
+	font-size: 32px;
+	color: #000;
+	margin-bottom: 20px;
+}
+.form {
+	max-width: 500px;
+	margin: 0 auto;
+}
+.form-horizontal {
+	margin: 0 auto;
+}
+.form-group {
+	max-width: 500px;
+}
+
+.list-group a {
+	max-width: 500px;
+	margin: 0 auto;
+}
+
+@keyframes masked-animation {
+	0% {
+		background-position: 0 0;   /*background-position 属性设置背景图像的起始位置。*/
+	}
+	100% {
+		background-position: -100% 0;
+	}
+}
