@@ -1,6 +1,10 @@
+html, body {
+	width: 100%;
+	height: 100%;
+}
 .center-outer {
 	width: 100%;
-	height: 100vh;
+	height: 100%;
 	display: table;
 }
 .center-inner {
@@ -13,6 +17,13 @@
 }
 .header-title {
 	color: #333;
+}
+.container {
+	min-width: 100%;
+	min-height: 100%;
+	width: 100%;
+	height: 100%;
+	display: block;
 }
 
 .side-nav {
@@ -45,10 +56,10 @@
 }
 
 .pageOne {
-	height: 100vh;
+	height: 100%;
 }
 .pageOneBG {
-	height: 100vh;
+	height: 100%;
 	width: 100%;
 	position: absolute;
 	background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1541348280442&di=6e569f0cd81b90660d2fa73b56c97710&imgtype=0&src=http%3A%2F%2Fimgs.aixifan.com%2Flive%2F1482393477851%2F1482393477851.jpg);
@@ -57,7 +68,7 @@
 }
 .pageOne {
 	width: 100%;
-	height: 100vh;
+	height: 100%;
 	display: table;
 }
 .container {
@@ -86,7 +97,7 @@
 }
 .pageTwo {
 	width: 100%;
-	height: 100vh;
+	height: 100%;
 	display: table;
 	background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1541350112487&di=70379e27689fc55b7d5403607c476b12&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201210%2F09%2F20121009143310_jrfTV.jpeg);
 }
@@ -103,7 +114,7 @@
 }
 
 .pageThreeBG {
-	height: 100vh;
+	height: 100%;
 	width: 100%;
 	position: absolute;
 	background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1541351458941&di=23151811c7e79b24de011de1104599bc&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2017-10-26%2F59f182ec40d28.jpg);
