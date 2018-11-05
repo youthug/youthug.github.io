@@ -3,7 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" /><!--使bootstrap兼容ie8,7-->
+	<meta http-equiv="X-UA-Compatible" content="IE=9" /><!--使bootstrap兼容ie9-->
 	<title>Boostrap框架</title>
 	<link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="./style.css">
@@ -95,6 +96,10 @@
 			</div>-->
 		</div>
 	</div>
+	<!--[if lt IE 9]>
+		<script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		<script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
 	<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
