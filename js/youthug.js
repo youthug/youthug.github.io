@@ -112,9 +112,9 @@ window.onload = function() {
 		byId("timer").innerText = year + "年" + month + "月" + date + "日 " + nowTime.toLocaleTimeString();
 	}, 1000);
 	dots[0].className = "active";
-	/* 初始化 */
-	SwitchPicture();
-	changeBox();
 	/* 初始化完毕 */
 	rotation();
 }
+/* 初始化 */
+SwitchPicture();
+changeBox();
