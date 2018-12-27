@@ -1,0 +1,55 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+body {
+	font-size: 14px;
+	background-color: #eff4f8;
+	font-family: Microsoft YaHei, SimHei, Tahoma!important;
+}
+div {
+	display: block;
+}
+-webkit-link {
+	color: #fff;
+}
+a:-webkit-any-link {
+	color: -webkit-link;
+	cursor: pointer;
+	text-decoration: underline;
+}
+#login-container {
+	position: relative;
+	height: 550px;
+	width: 100%;
+	min-width: 1102px;
+	overflow: hidden;
+}
+.header-container {
+	position: absolute;
+	height: 60px;
+	width: 100%;
+	left: 0;
+	z-index: 3;
+}
+#login-header {
+	height: 60px;
+	min-width: 1002px;
+}
+#login-container .logo {
+	/* background-image: url(./img/logo.png) no-repeat scroll 0 transparent; */
+	float: left;
+	width: 181px;
+	height: 51px;
+	margin: 51px;
+	overflow: hidden;
+	display: inline;
+}
+#login-container .cloud-logo {
+	display: block;
+	float: left;
+	width: 186px;
+	height: 44px;
+	outline: medium none;
+	text-indent: -9999em;
+}

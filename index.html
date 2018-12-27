@@ -9,32 +9,82 @@
 
 	<link rel="stylesheet" type="text/css" href="./css/main.css">
 	<link rel="stylesheet" type="text/css" href="./css/buttons.css">
+
+	<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+	<!--<link rel="stylesheet" href="./css/font-awesome-4.7.0/css/font-awesome.min.css">-->
 	<!--[if IE]>
   	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 </head>
 
 <body>
+	<div id="out"></div>
 	<div class="wrapper">
-		<div class="nav">
+		<div id="navBar" class="nav">
 			<div class="logo">
 				怎么回事小老弟？
 			</div>
+			<div id="timer"></div>
 			<div class="menu">
-				<ul>
-					<li><a href="https://www.youthug.club/">首页</a></li>
+				<ul id="ul-menu">
+					<li><a href="javascript:void(0);"><i class="fa fa-angle-down" aria-hidden="true"></i>&nbsp; 首页</a>
+						<ul>
+							<li><a href="https://www.youthug.club/">YoutHug</a></li>
+							<li><a href="https://github.com/youthug" target="blank">GitHub主页</a></li>
+						</ul>
+					</li>
 					<li><a href="./blog/">博客</a></li>
-					<li><a href="./hw/">作业</a></li>
+					<li><a href="javascript:void(0);"><i class="fa fa-angle-down" aria-hidden="true"></i>&nbsp; 作业</a>
+						<ul>
+							<li><a href="./hw">Web前端作业</a></li>
+							<li><a href="">Java Web作业</a></li>
+						</ul>
+					</li>
 				</ul>
 			</div>
 		</div>
-		<div class="header">
-			<div class="content">
-				<h1>Web前端项目开发实践</h1>
-				<p>好好学习天天向上</p>
+		<div class="main">
+			<div class="carousel" id="carousel">
+				<div class="carousel-inner" id="carousel-inner">
+					<div class="item active">
+						<img src="./img/lg-001.jpg" alt="First slide">
+					</div>
+					<div class="item">
+						<img src="./img/lg-002.jpg" alt="Second slide">
+					</div>
+					<div class="item">
+						<img src="./img/lg-003.jpg" alt="Third slide">
+					</div>
+				</div>
+				<div class="dots" id="caroDots">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
 			</div>
-			<button class="button button--tamaya button--round-l button--text-thick button--border-medium button--text-upper button--size-s button--inverted" data-text="Get Start"><span>Get Start</span></button>
+			<div class="msgBox" id="msgBox">
+				<div class="title" id="msgTitle">
+					<ul>
+						<li><a href="javascript:void(0);">热点</a></li>
+						<li><a href="javascript:void(0);">动态</a></li>
+						<li><a href="javascript:void(0);">资源</a></li>
+						<li><a href="javascript:void(0);">关注</a></li>
+						<li><a href="javascript:void(0);">消息</a></li>
+					</ul>
+				</div>
+				<div class="content">
+					<div id="hot" class="box hot">暂无热点</div>
+					<div id="activities" class="box activities">暂无新动态</div>
+					<div id="source" class="box source">暂无可用资源</div>
+					<div id="follows" class="box follows">还未关注其他人</div>
+					<div id="msg" class="box msg">暂无新消息</div>
+				</div>
+			</div>
 		</div>
+		<button class="button button--tamaya button--round-l button--text-thick button--border-medium button--text-upper button--size-s button--inverted" data-text="Get Start"><span>Get Start</span></button>
 	</div>
+
+	<!-- JavaScript -->
+	<script src="./js/youthug.js"></script>
 </body>
 </html>

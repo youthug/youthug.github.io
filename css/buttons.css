@@ -93,8 +93,9 @@
 	/*min-width: 180px;*/
 }
 .button--tamaya.button--inverted {
-	color: #c0c0c0;
-	border-color: #523722;
+	color: #1EB450;
+	/* border-color: #523722; */
+	border-color: #1EB450;
 }
 .button--tamaya::before,
 .button--tamaya::after {
@@ -113,8 +114,8 @@
 }
 .button--tamaya.button--inverted::before,
 .button--tamaya.button--inverted::after {
-	background: #523722;
-	color: #c0c0c0;
+	background: #1EB450;
+	color: #fff;
 }
 .button--tamaya::before {
 	top: 0;
