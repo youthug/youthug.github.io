@@ -23,7 +23,10 @@
 .button > span {
 	vertical-align: middle;
 }
-
+.button > span a {
+	text-decoration: none;
+	color: #1EB450;
+}
 /* Text color adjustments (we could stick to the "inherit" but that does not work well in Safari) */
 /*.bg-1 .button {
 	color: #37474f;
