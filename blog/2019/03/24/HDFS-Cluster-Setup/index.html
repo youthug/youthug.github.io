@@ -1,0 +1,167 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta name="generator" content="Hexo 3.8.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Hadoop笔记（二）：虚拟机下 Hadoop-2.6.1 完全分布式集群搭建"><meta name="keywords" content="Hadoop,HDFS"><meta name="author" content="Yout"><meta name="copyright" content="Yout"><title>Hadoop笔记（二）：虚拟机下 Hadoop-2.6.1 完全分布式集群搭建 | 可爱迷人的反派</title><link rel="shortcut icon" href="http://pouotmqe7.bkt.clouddn.com/b/i/site/favicon-16x16.png"><link rel="stylesheet" href="/blog/css/index.css?version=1.6.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.6.1"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><script>var GLOBAL_CONFIG = { 
+  root: '/blog/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  }
+} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#修改虚拟机主机名"><span class="toc-number">1.</span> <span class="toc-text">修改虚拟机主机名</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#查看当前主机名"><span class="toc-number">1.1.</span> <span class="toc-text">查看当前主机名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CentOS-6-x"><span class="toc-number">1.2.</span> <span class="toc-text">CentOS 6.x</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CentOS-7-x"><span class="toc-number">1.3.</span> <span class="toc-text">CentOS 7.x</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#添加域名映射"><span class="toc-number">2.</span> <span class="toc-text">添加域名映射</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#通过-SecureCRT-把下载好的压缩包上传至虚拟机，并解压"><span class="toc-number">3.</span> <span class="toc-text">通过 SecureCRT 把下载好的压缩包上传至虚拟机，并解压</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#上传"><span class="toc-number">3.1.</span> <span class="toc-text">上传</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解压"><span class="toc-number">3.2.</span> <span class="toc-text">解压</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#配置-JDK，Hadoop-到-PATH-中"><span class="toc-number">4.</span> <span class="toc-text">配置 JDK，Hadoop 到 $PATH 中</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#配置和启动-HDFS"><span class="toc-number">5.</span> <span class="toc-text">配置和启动 HDFS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#编辑配置文件"><span class="toc-number">5.1.</span> <span class="toc-text">编辑配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#hadoop-env-sh"><span class="toc-number">5.1.1.</span> <span class="toc-text">hadoop-env.sh</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#core-site-xml"><span class="toc-number">5.1.2.</span> <span class="toc-text">core-site.xml</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hdfs-site-xml"><span class="toc-number">5.1.3.</span> <span class="toc-text">hdfs-site.xml</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mapred-site-xml"><span class="toc-number">5.1.4.</span> <span class="toc-text">mapred-site.xml</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#yarn-site-xml"><span class="toc-number">5.1.5.</span> <span class="toc-text">yarn-site.xml</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#slaves"><span class="toc-number">5.1.6.</span> <span class="toc-text">slaves</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#格式化-DFS-文件系统"><span class="toc-number">5.2.</span> <span class="toc-text">格式化 DFS 文件系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分发文件至其他两台机器上"><span class="toc-number">5.3.</span> <span class="toc-text">分发文件至其他两台机器上</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动集群"><span class="toc-number">5.4.</span> <span class="toc-text">启动集群</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#测试-HDFS-基本功能"><span class="toc-number">6.</span> <span class="toc-text">测试 HDFS 基本功能</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#可能遇到的问题"><span class="toc-number">7.</span> <span class="toc-text">可能遇到的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#JDK-Hadoop-环境变量不生效"><span class="toc-number">7.1.</span> <span class="toc-text">JDK/Hadoop 环境变量不生效</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#不慎将-PATH-设置错，导致连一些基本命令都用不了"><span class="toc-number">7.2.</span> <span class="toc-text">不慎将 $PATH 设置错，导致连一些基本命令都用不了</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="http://pouotmqe7.bkt.clouddn.com/b/i/site/avatar.png"></div><div class="author-info__name text-center">Yout</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/blog/archives"><span class="pull-left">文章</span><span class="pull-right">4</span></a><a class="author-info-articles__tags article-meta" href="/blog/tags"><span class="pull-left">标签</span><span class="pull-right">5</span></a><a class="author-info-articles__categories article-meta" href="/blog/categories"><span class="pull-left">分类</span><span class="pull-right">3</span></a></div></div></div><div id="content-outer"><div class="no-bg" id="top-container"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/blog/">可爱迷人的反派</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page" href="/">Home</a><a class="site-page" href="/blog/archives">Archives</a><a class="site-page" href="/blog/tags">Tags</a><a class="site-page" href="/blog/categories">Categories</a></span></div><div id="post-info"><div id="post-title">Hadoop笔记（二）：虚拟机下 Hadoop-2.6.1 完全分布式集群搭建</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-03-24</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/blog/categories/笔记/">笔记</a><i class="fa fa-angle-right" aria-hidden="true"></i><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/blog/categories/笔记/大数据/">大数据</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><p>配置Hadoop-2.6.1集群（3台），准备工作：</p>
+<ul>
+<li>下载 JDK，Hadoop<br><a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">JDK 1.8</a><br><a href="https://hadoop.apache.org/releases.html" target="_blank" rel="noopener">Hadoop</a></li>
+<li>启动虚拟机</li>
+</ul>
+<p>目标：</p>
+<ul>
+<li>修改虚拟机主机名，添加域名映射</li>
+<li>完成虚拟机的 <strong>JDK</strong> 和 <strong>Hadoop</strong> 的环境搭建</li>
+<li>成功启动 <strong>HDFS 集群</strong></li>
+<li>测试 HDFS 的 <strong>上传，下载</strong> 等一些基础功能</li>
+</ul>
+<a id="more"></a>
+<h1 id="修改虚拟机主机名"><a href="#修改虚拟机主机名" class="headerlink" title="修改虚拟机主机名"></a>修改虚拟机主机名</h1><h2 id="查看当前主机名"><a href="#查看当前主机名" class="headerlink" title="查看当前主机名"></a>查看当前主机名</h2><p><code>hostname</code><br><img src="http://pouotmqe7.bkt.clouddn.com/b/i/20190324/hostname.png.ylit" alt></p>
+<h2 id="CentOS-6-x"><a href="#CentOS-6-x" class="headerlink" title="CentOS 6.x"></a>CentOS 6.x</h2><ul>
+<li>临时修改，立刻生效（重启恢复）<br><code>hostname &lt;临时主机名&gt;
+![](http://pouotmqe7.bkt.clouddn.com/b/i/20190324/hostname-new.png.ylit)
+此时仍显示</code>root@hdfs<code>，退出重新登陆到虚拟机即可变成</code>root@test`，但重启后会恢复成之前的主机名。</li>
+<li>永久修改，重启生效<br>共需修改两处，保持一致：<ul>
+<li><strong>/etc/sysconfig/network</strong><br><code>HOSTNAME=&lt;主机名&gt;</code><br><img src="http://pouotmqe7.bkt.clouddn.com/b/i/20190324/etc-sysconfig-network.png.ylit" alt></li>
+<li><strong>/etc/hosts</strong><br><code>127.0.0.1       localhost.localdomain   localhost.localdomain   localhost4      localhost4.localdomain4 &lt;主机名&gt;</code><br><img src="http://pouotmqe7.bkt.clouddn.com/b/i/20190324/etc-hosts-6.x.png.ylit" alt></li>
+<li>都修改好后重启，执行 <code>reboot</code> 或 <code>init 6</code> 即可看到效果</li>
+</ul>
+</li>
+</ul>
+<h2 id="CentOS-7-x"><a href="#CentOS-7-x" class="headerlink" title="CentOS 7.x"></a>CentOS 7.x</h2><p>CentOS 7 中提供了新命令：<code>hostnamectl</code>，可以用来修改主机名，并且在 <strong>/etc/sysconfig/network</strong> 中修改已经失效。</p>
+<ul>
+<li><code>hostnamectl set-hostname &lt;主机名&gt;</code>，用这条命令修改会立刻生效，并且重启后也仍有效<br><img src="http://pouotmqe7.bkt.clouddn.com/b/i/20190324/hostnamectl.png.ylit" alt></li>
+<li>在 <strong>/etc/hosts</strong> 中添加主机名（原本没有，自己加上去）<br><code>127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4 &lt;主机名&gt;</code><br><img src="http://pouotmqe7.bkt.clouddn.com/b/i/20190324/etc-hosts-7.x.png.ylit" alt></li>
+</ul>
+<h1 id="添加域名映射"><a href="#添加域名映射" class="headerlink" title="添加域名映射"></a>添加域名映射</h1><p>做好域名映射之后，可以在配置文件中直接用域名替换 IP，省的再输那——么长的 IP 地址了。</p>
+<ul>
+<li>编辑 <strong>/etc/hosts</strong> 文件，添加域名映射，包含集群的三台主机<br>格式：<code>ip 域名</code><br><code>vi /etc/hosts</code><br><img src="http://pouotmqe7.bkt.clouddn.com/b/i/20190324/domains.png.ylit" alt></li>
+</ul>
+<h1 id="通过-SecureCRT-把下载好的压缩包上传至虚拟机，并解压"><a href="#通过-SecureCRT-把下载好的压缩包上传至虚拟机，并解压" class="headerlink" title="通过 SecureCRT 把下载好的压缩包上传至虚拟机，并解压"></a>通过 SecureCRT 把下载好的压缩包上传至虚拟机，并解压</h1><p>SecureCRT 自带 FTP 功能，可传输文件，使用的快捷键为 <strong>Alt + p</strong>。</p>
+<h2 id="上传"><a href="#上传" class="headerlink" title="上传"></a>上传</h2><p>在 SecureCRT 已登陆至虚拟机的情况下，按 <strong>Alt + p</strong>，弹出 SFTP 界面，直接拖动文件至界面即可开始上传。若拖动无效的话，需要手动敲命令：<br><code>put &lt;文件路径&gt;</code> 如 <code>put e:\jdk.tar.gz</code><br>路径最好不带中文，可能会识别不了。<br><img src="http://pouotmqe7.bkt.clouddn.com/b/i/20190324/sftp-put.png.ylit" alt><br>成功上传后，文件在默认存放在虚拟机的当前用户目录下，root 用户则是在 /root 目录下，普通用户默认在 /home/&lt;用户名&gt;。<br><img src="http://pouotmqe7.bkt.clouddn.com/b/i/20190324/files.png.ylit" alt></p>
+<h2 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h2><blockquote>
+<p>tar.gz 格式压缩文件的解压：<br>  解压至当前目录：<code>tar -xzvf &lt;文件路径&gt;</code><br>  解压至其他目录：<code>tar -xzvf &lt;文件路径&gt; -C &lt;目录&gt;</code>  </p>
+</blockquote>
+<ol>
+<li><p>解压至 <strong>/usr/install_pack/</strong> 目录下</p>
+<ul>
+<li>JDK: <code>tar -xzvf ~/jdk_1.8.0_131.tar.gz -C /usr/install_pack/</code></li>
+<li>Hadoop：<code>tar -xzvf ~/hadoop-2.6.1.tar.gz -C /usr/install_pack/</code></li>
+</ul>
+</li>
+<li><p>解压完毕<br><img src="http://pouotmqe7.bkt.clouddn.com/b/i/20190324/jdk-and-hadoop.png.ylit" alt></p>
+</li>
+</ol>
+<h1 id="配置-JDK，Hadoop-到-PATH-中"><a href="#配置-JDK，Hadoop-到-PATH-中" class="headerlink" title="配置 JDK，Hadoop 到 $PATH 中"></a>配置 JDK，Hadoop 到 $PATH 中</h1><ol>
+<li><p>编辑 <strong>/etc/profile</strong> 文件：<code>vi /etc/profile</code>，文件尾添加以下内容，保存退出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/install_pack/jdk</span><br><span class="line">export HADOOP_HOME=/usr/install_pack/hadoop</span><br><span class="line">export CLASSPATH=.:%JAVA_HOME/lib:$JAVA_HOME/jre/lib</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_HOME/sbin:$HADOOP_HOME/bin:$HIVE_HOME/bin</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使刚才的更改立刻生效：<code>source /etc/profile</code></p>
+</li>
+<li>测试 Java 环境是否 OK：<code>java -version</code><br><img src="http://pouotmqe7.bkt.clouddn.com/b/i/20190324/java-env.png.ylit" alt></li>
+<li>测试 Hadoop 环境是否 OK：<code>hadoop version</code><br><img src="http://pouotmqe7.bkt.clouddn.com/b/i/20190324/hadoop-env.png.ylit" alt></li>
+</ol>
+<p><strong><font color="#F4606C">!!! 在配置好 Hadoop 前，先不要执行 Hadoop 的其他命令 !!!</font></strong><br><strong><font color="#F4606C">!!! 在执行格式化和分发文件前也不可以启动集群，否则会出错 !!!</font></strong></p>
+<h1 id="配置和启动-HDFS"><a href="#配置和启动-HDFS" class="headerlink" title="配置和启动 HDFS"></a>配置和启动 HDFS</h1><p>确定 JDK 没问题后，修改 Hadoop 的配置文件，位于 <strong>$HADOOP_HOME/etc/hadoop</strong> 下。</p>
+<h2 id="编辑配置文件"><a href="#编辑配置文件" class="headerlink" title="编辑配置文件"></a>编辑配置文件</h2><p>注意配置文件不能写错，xml 代码有闭合标签吗：<code>&lt;name&gt;XXX&lt;/name&gt;</code>，内容多了空格/少了小数点都不行。</p>
+<ol>
+<li>先进入配置文件目录<br><code>cd $HADOOP_HOME/etc/hadoop</code>，<strong>$HADOOP_HOME</strong> 即为在 /etc/profile 中设置的 HADOOP_HOME<br>也可使用完整路径：<code>cd /path/to/hadoop-2.6.1/etc/hadoop</code>。</li>
+<li><p><code>ls</code> 看下内容，需要修改的文件有 6 个，<strong>hadoop-env.sh，core-site.xml，hdfs-site.xml，mapred-site.xml，yarn-site.xml，slaves（新版本为workers）</strong><br><img src="http://pouotmqe7.bkt.clouddn.com/b/i/20190324/ls-hadoop.png.ylit" alt></p>
+<h3 id="hadoop-env-sh"><a href="#hadoop-env-sh" class="headerlink" title="hadoop-env.sh"></a>hadoop-env.sh</h3><ul>
+<li><p>需要在这个文件中声明 JDK 路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># The java implementation to use.</span><br><span class="line">export JAVA_HOME=/usr/install_pack/jdk</span><br></pre></td></tr></table></figure>
+<p><img src="http://pouotmqe7.bkt.clouddn.com/b/i/20190324/hadoop-env.sh.png.ylit" alt="hadoop-env.sh"></p>
+</li>
+</ul>
+<h3 id="core-site-xml"><a href="#core-site-xml" class="headerlink" title="core-site.xml"></a>core-site.xml</h3><ul>
+<li><p>设置 namenode 节点<br>value 的格式：hdfs://主机名或者IP:9000</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;fs.defaultFS&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;hdfs://hdfs:9000&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置 Hadoop 存放元数据文件的目录，在执行格式化后会自动创建<br> 这里设置为 Hadoop 目录下的 hdpdata</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;/usr/install_pack/hadoop-2.6.1/hdpdata&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br></pre></td></tr></table></figure>
+<p> <font color="#cccccc">图中目录里的 <strong>/usr/install_pack/hadoop</strong> 是手动创建的 <strong>/usr/install_pack/hadoop-2.6.1</strong> 的软链接</font><br> <img src="http://pouotmqe7.bkt.clouddn.com/b/i/20190324/core-site.xml.png.ylit" alt="core-site.xml"></p>
+</li>
+</ul>
+<h3 id="hdfs-site-xml"><a href="#hdfs-site-xml" class="headerlink" title="hdfs-site.xml"></a>hdfs-site.xml</h3><ul>
+<li>设置数据的备份数目，默认为 3 份<br><img src="http://pouotmqe7.bkt.clouddn.com/b/i/20190324/hdfs-site.xml.png.ylit" alt="hdfs-site.xml"></li>
+</ul>
+<h3 id="mapred-site-xml"><a href="#mapred-site-xml" class="headerlink" title="mapred-site.xml"></a>mapred-site.xml</h3><ul>
+<li>设置 MapReduce 的资源管理器为 yarn<br><img src="http://pouotmqe7.bkt.clouddn.com/b/i/20190324/mapred-site.xml.png.ylit" alt></li>
+</ul>
+<h3 id="yarn-site-xml"><a href="#yarn-site-xml" class="headerlink" title="yarn-site.xml"></a>yarn-site.xml</h3><ul>
+<li>设置 resourcemanager 的启动位置，填写主机名<br><img src="http://pouotmqe7.bkt.clouddn.com/b/i/20190324/yarn-site.xml.png.ylit" alt></li>
+</ul>
+<h3 id="slaves"><a href="#slaves" class="headerlink" title="slaves"></a>slaves</h3><ul>
+<li>填写集群所有机器的主机名<br><img src="http://pouotmqe7.bkt.clouddn.com/b/i/20190324/slaves.png.ylit" alt></li>
+</ul>
+</li>
+</ol>
+<h2 id="格式化-DFS-文件系统"><a href="#格式化-DFS-文件系统" class="headerlink" title="格式化 DFS 文件系统"></a>格式化 DFS 文件系统</h2><ul>
+<li><p>确认配置文件无误后，执行格式化，尽量不要多次执行格式化<br><code>hdfs namenode -format</code><br>执行完毕后出现这样的消息才算格式化成功。</p>
+<blockquote>
+<p><strong>19/03/24 14:16:07 INFO common.Storage: Storage directory /usr/install_pack/hadoop/hdpdata/dfs/name <font color="#F4606C">has been successfully formatted</font>.</strong></p>
+</blockquote>
+<p>其中 <code>Storage directory</code> 为 core-site.xml 中设置的 <code>&lt;name&gt;hadoop.tmp.dir&lt;/name&gt;</code> 目录。<br>如果不设置的话，默认在：<code>/tmp/{$user}</code> 目录下。<br><img src="http://pouotmqe7.bkt.clouddn.com/b/i/20190324/hdfs-namenode-format.png.ylit" alt="hdfs namenode -format"></p>
+</li>
+<li>如果格式化失败，先看报了什么错误，再手动删除这个目录，检查配置文件是否正确，然后重新格式化一遍</li>
+</ul>
+<h2 id="分发文件至其他两台机器上"><a href="#分发文件至其他两台机器上" class="headerlink" title="分发文件至其他两台机器上"></a>分发文件至其他两台机器上</h2><ul>
+<li><font color="#F4606C">一定要在成功格式化后再将文件分发到其他机器上</font></li>
+<li>当前机器为 <code>hdfs</code>，其他两台分别为 <code>dfs01</code> 和 <code>dfs02</code>，使用 <code>scp</code> 将文件发至另外两台机器上<br>使用主机名进行发送的话，需要在 <strong>/etc/hosts</strong> 文件中添加域名映射<ol>
+<li>dfs01<ul>
+<li>发送 Hadoop 和 JDK<br><code>scp -r /usr/install_pack dfs01:/usr</code></li>
+<li>发送 hosts 文件<br><code>scp /etc/hosts dfs01:/etc</code></li>
+<li>发送 profile 文件<br><code>scp /etc/profile dfs01:/etc</code></li>
+</ul>
+</li>
+<li>dfs02<br>把 <code>dfs01</code> 替换成 <code>dfs02</code> 再发一次。</li>
+<li>全部发送完毕<br><img src="http://pouotmqe7.bkt.clouddn.com/b/i/20190324/send-pack-done.png.ylit" alt></li>
+<li>向所有机器发送 <code>source /etc/profile</code> 命令，使环境变量配置生效（在每台虚拟机上分别执行也可以）<ul>
+<li>用 SecureCRT（或其他软件）登陆集群中的每一台机器</li>
+<li>点击 SecureCRT 菜单中的 <strong>View</strong>，将 <strong>Command Window</strong> 勾上，界面底部会出现一个窗口<br><img src="http://pouotmqe7.bkt.clouddn.com/b/i/20190324/open-command-window.png.ylit" alt="打开命令窗口"></li>
+<li>在底部出现的窗口中右键，勾上 <strong>Send Commands to &gt; All Sessions</strong>，向所有已连接的会话发送命令<br><img src="http://pouotmqe7.bkt.clouddn.com/b/i/20190324/set-to-all.png.ylit" alt="设置为向所有会话发送命令"></li>
+<li>编辑命令： <code>source /etc/profile</code>，回车发送<br><img src="http://pouotmqe7.bkt.clouddn.com/b/i/20190324/send-commands.png.ylit" alt="发送命令"></li>
+<li>然后已连接的每台虚拟机都会执行这条命令<br><img src="http://pouotmqe7.bkt.clouddn.com/b/i/20190324/hdfs-get-commands.png.ylit" alt="hdfs"><br><img src="http://pouotmqe7.bkt.clouddn.com/b/i/20190324/dfs01-get-commands.png.ylit" alt="dfs01"><br><img src="http://pouotmqe7.bkt.clouddn.com/b/i/20190324/dfs02-get-commands.png.ylit" alt="dfs02"></li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="启动集群"><a href="#启动集群" class="headerlink" title="启动集群"></a>启动集群</h2><ul>
+<li><p>至此，Hadoop 已经全部配置完毕，启动集群<br>执行：<code>start-dfs.sh</code>。<br>注：这个 Shell 脚本存放在 $HADOOP_HOME/sbin 目录下，如果 $PATH 中未配置该路径，会出现 <font color="#F4606C">command not found</font> 的情况，需要进入到该目录下才能执行该脚本：<code>cd $HADOOP_HOME/sbin</code>，然后执行 <code>./start-dfs.sh</code>。<br>下图就是没有配置 $HADOOP_HOME/sbin 的情况，系统找不到该文件执行。<br><img src="http://pouotmqe7.bkt.clouddn.com/b/i/20190324/start-dfs.sh.png.ylit" alt="执行 start-dfs.sh 脚本文件"></p>
+<blockquote>
+<p>所以说，不将 Hadoop 的 bin 和 sbin 目录添加到 $PATH 中也是可以执行命令的，但需要敲出 命令or可执行文件 的完整路径 <code>/usr/install_pack/hadoop-2.6.1/sbin/start-dfs.sh</code> 或者进入到该目录使用 <code>./start-dfs.sh</code> 才能执行，这样太麻烦了，还是直接添加到 $PATH 中比较方便。</p>
+</blockquote>
+</li>
+<li><p>使用 <code>jps</code> 命令（Java Virtual Machine Process Status Tool）查看本机 <strong>jvm进程</strong>，在 <strong>$JAVA_HOME/bin</strong> 目录下<br><img src="http://pouotmqe7.bkt.clouddn.com/b/i/20190324/jps.png.ylit" alt="jps 命令"><br>出现这几个说明集群已成功启动，可直接测试 <a href>上传下载功能</a>。</p>
+</li>
+<li><p>查看 Namenode 进程所监听的端口<br><code>jps</code> 命令中可以看到，Namenode 的 进程PID 为 <strong>3165</strong>，使用 <code>netstat -lntp</code> 查看它监听的 TCP 端口<br>共监听两个端口：9000 和 50070：</p>
+<ul>
+<li>:50070 端口是 namenode 对外提供的 http 服务，通过这个服务可以查看 hdfs 集群的状态</li>
+<li>:9000 则是提供 rpc 服务的端口（如客户端的交互，元数据的获取等）<br><img src="http://pouotmqe7.bkt.clouddn.com/b/i/20190324/netstat-lntp.png.ylit" alt="查看 Namenode 监听的端口"></li>
+</ul>
+</li>
+<li>在主机查看 HDFS 集群状态<br>浏览器打开地址：<strong>192.168.233.90:50070</strong>：<br><img src="http://pouotmqe7.bkt.clouddn.com/b/i/20190324/hdfs-status.png.ylit" alt></li>
+</ul>
+<h1 id="测试-HDFS-基本功能"><a href="#测试-HDFS-基本功能" class="headerlink" title="测试 HDFS 基本功能"></a>测试 HDFS 基本功能</h1><ul>
+<li>创建文件夹<br><code>hdfs dfs -mkdir /test_dir</code><br><img src="http://pouotmqe7.bkt.clouddn.com/b/i/20190324/dfs-mkdir.png.ylit" alt></li>
+<li>上传<br><code>hdfs dfs -put ~/file /test_dir</code><br><img src="http://pouotmqe7.bkt.clouddn.com/b/i/20190324/dfs-put.png.ylit" alt></li>
+<li>浏览文件列表<br><code>hdfs dfs -ls /</code><br><img src="http://pouotmqe7.bkt.clouddn.com/b/i/20190324/dfs-ls.png.ylit" alt></li>
+<li>下载<br><code>hdfs dfs -get /test_dir/file ~/file_download</code><br><img src="http://pouotmqe7.bkt.clouddn.com/b/i/20190324/dfs-get.png.ylit" alt></li>
+<li>删除文件<br><code>hdfs dfs -rm /test_dir/file</code><br><img src="http://pouotmqe7.bkt.clouddn.com/b/i/20190324/dfs-rm.png.ylit" alt></li>
+<li>删除文件夹<br><code>hdfs dfs -rmdir /test_dir</code><br><img src="http://pouotmqe7.bkt.clouddn.com/b/i/20190324/dfs-rmdir.png.ylit" alt></li>
+</ul>
+<h1 id="可能遇到的问题"><a href="#可能遇到的问题" class="headerlink" title="可能遇到的问题"></a>可能遇到的问题</h1><h2 id="JDK-Hadoop-环境变量不生效"><a href="#JDK-Hadoop-环境变量不生效" class="headerlink" title="JDK/Hadoop 环境变量不生效"></a>JDK/Hadoop 环境变量不生效</h2><h2 id="不慎将-PATH-设置错，导致连一些基本命令都用不了"><a href="#不慎将-PATH-设置错，导致连一些基本命令都用不了" class="headerlink" title="不慎将 $PATH 设置错，导致连一些基本命令都用不了"></a>不慎将 $PATH 设置错，导致连一些基本命令都用不了</h2><ol>
+<li><code>vi /etc/profile</code>，先用 <code>#</code> 将改动 PATH 的地方注释掉<br>再添加一行：<code>export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin</code>。<br><img src="http://pouotmqe7.bkt.clouddn.com/b/i/20190324/restore-path.png.ylit" alt></li>
+<li>更新一下新设置的 $PATH：<code>source /etc/profile</code></li>
+<li>如果系统命令都能够正常使用了，<strong><font color="#F4606C">就删掉新加的那行</font></strong>，取消第一步的注释，检查 <strong>JDK_HOME，HADOOP_HOME</strong> 等目录是否正确；<br><strong><code>export PATH=[...]</code> 一定不能写错，分隔是英文冒号<code>:</code>；<br>记得在前面或者后面加上 $PATH：<code>export PATH=$PATH:...:...</code></strong>。</li>
+<li>再 <code>source /etc/profile</code> 一遍</li>
+</ol>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Yout</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://youthug.github.io/blog/2019/03/24/HDFS-Cluster-Setup/">https://youthug.github.io/blog/2019/03/24/HDFS-Cluster-Setup/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://youthug.github.io/blog">可爱迷人的反派</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/blog/tags/Hadoop/">Hadoop</a><a class="post-meta__tags" href="/blog/tags/HDFS/">HDFS</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/blog/2019/03/25/Watermark-Images-in-Photoshop/"><i class="fa fa-chevron-left">  </i><span>用 Photoshop 批量给图片添加水印/LOGO</span></a></div><div class="next-post pull-right"><a href="/blog/2019/03/23/Assigning-an-IP-Address-to-a-Virtual-Machine/"><span>Hadoop笔记（一）：为仅主机模式下的虚拟机 (CentOS) 分配静态 IP，使主机可访问</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2018 - 2019 By Yout</div><div class="framework-info"><span>驱动 - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file-o"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/blog/js/utils.js?version=1.6.1"></script><script src="/blog/js/fancybox.js?version=1.6.1"></script><script src="/blog/js/sidebar.js?version=1.6.1"></script><script src="/blog/js/copy.js?version=1.6.1"></script><script src="/blog/js/fireworks.js?version=1.6.1"></script><script src="/blog/js/transition.js?version=1.6.1"></script><script src="/blog/js/scroll.js?version=1.6.1"></script><script src="/blog/js/head.js?version=1.6.1"></script><script>if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+}</script></body></html>
